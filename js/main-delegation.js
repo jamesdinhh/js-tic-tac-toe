@@ -3,7 +3,7 @@
  */
 
 import { CELL_VALUE, GAME_STATUS, TURN } from "./constants.js";
-import { getCellElementAtIdx, getCellElementList, getCurrentTurnElement, getGameStatusElement, getReplayButtonElement } from "./selectors.js";
+import { getCellElementAtIdx, getCellElementList, getCellListElement, getCurrentTurnElement, getGameStatusElement, getReplayButtonElement } from "./selectors.js";
 import { checkGameStatus } from "./utils.js";
 
 
@@ -78,11 +78,23 @@ function handleCellCLick(cell,index) {
     console.log('click', cell, index);
 }
 
-function initCellElementList() {
-    const cellElementList = getCellElementList();
-    cellElementList.forEach((cell,index) => {
-        cell.addEventListener('click', () => handleCellCLick(cell,index));
+function initCellListElement() {
+    //set index for li element
+    const liList = getCellListElement();
+
+    liList.forEach((cell,index) => {
+        cell.dataset.idx = index;
     })
+    const ulElement = getCellListElement();
+    if (ulElement) {
+        ulElement.addEventListener('click', (event) => {
+            if (event.target.tagName !== 'LI') return;
+
+            const index = Number.parseInt(event.target.dataset.idx);
+            handleCellCLick(event.target, index);
+        });
+     }
+    
 }
 
 function resetGame() {
@@ -137,6 +149,6 @@ function initReplayButton() {
  */
 
 (() => {
-    initCellElementList();
+    initCellListElement();
     initReplayButton();
 })();
