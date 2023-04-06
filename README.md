@@ -4,7 +4,7 @@ A simple tic tac toe game using vanilla javascript from Mr. Paul Nguyen.
 
 This repo is used for self-studying purpose.
 
-Demo: [https://jamesdinhh.github.io/js-tic-tac-toe/](https://jamesdinhh.github.io/js-tic-tac-toe/)
+Demo: [https://js-tic-tac-toe-jamesdinhh.vercel.app/](https://js-tic-tac-toe-jamesdinhh.vercel.app/)
 
 ## Game elements
 
